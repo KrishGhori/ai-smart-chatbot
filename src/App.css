@@ -1,0 +1,235 @@
+.home{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+nav{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: aliceblue;
+  padding: 10px 30px;
+  font-size:xx-large;
+  cursor: pointer;
+}
+
+.hero{
+
+  height: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.main_para{
+  font-size: 2.5vmax;
+}
+
+.cate{
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 25px;
+  flex-wrap: wrap;
+}
+
+.U1,.G1,.L1{
+  border: 2px solid whitesmoke;
+  padding:10px 20px;
+  border-radius: 30px;
+  font-size:medium;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.U1 svg , .G1 svg ,.L1 svg {
+  height: 25px;
+  width: 30px;
+}
+
+.U1 svg :hover{
+  color: rgb(34, 85, 155);
+}
+.G1 svg :hover{
+  color: rgb(75, 90, 23);
+}
+.L1 svg :hover{
+  color: rgb(207, 201, 24);
+}
+
+.U1:hover,.G1:hover,.L1:hover {
+  border-color: rgb(210, 241, 241);
+  cursor: pointer;
+  margin: 1px;
+}
+
+@media (max-width : 500px){
+   .main_para{
+    font-size: 25px;
+   }
+}
+
+
+/* Chat_Box */
+
+.add{
+  width: 100%;
+  height: calc( 100vh - 60px - 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: fixed; 
+}
+
+.plues , .submit{
+  height: 60px;
+  width: 60px;
+  color:aliceblue;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit svg{
+  width: 3.5rem;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.plues svg {
+  width: 3.5rem;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.plues:hover , .submit:hover{
+  
+  border-color: rgb(210, 241, 241);
+}
+
+.input{
+  /* background-color: black; */
+  height: 3.5rem;
+  width: 35rem;
+  border-color: 2px solid aliceblue;
+  border-radius: 30px;
+  color: white;
+  background-color: rgba(39, 39, 39, 0.742);
+  padding: 10px 20px;
+  font-size: medium;
+ 
+  
+} 
+
+
+/* chatpage */
+
+.chat-page{
+  height: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: auto;
+}
+.user , .ai {
+  width: 100%;
+  padding: 20px 30px;
+  color:aliceblue;
+  border: 2px solid rgb(57, 57, 57);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 30px;
+  font-size: 20px;
+  flex-wrap: wrap;
+}
+
+
+.user-s{
+  color: aliceblue;
+}
+
+.user:hover , .ai:hover{
+  border-color: rgb(210, 241, 241);
+  cursor: pointer;
+}
+
+
+.pop-up , .pop-gen {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 5px;
+ justify-items: center;
+ display: flex;
+ justify-content: center;
+}
+
+.pop-up:hover , .pop-gen:hover {
+  background-color: rgb(57, 57, 57);
+  
+}
+
+.pop-up svg , .pop-gen svg{
+  width: 23px;
+  height: 23px;
+}
+.pop-up svg :hover{
+  color: rgb(75, 90, 23);
+}
+.pop-gen svg :hover{
+  color: rgb(75, 90, 23);
+}
+
+.tohome{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+}
+.backhome{
+  width: 25%;
+  height: 60px;
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  color: whitesmoke;
+  background-color: rgba(39, 39, 39, 0.742);
+  border-radius: 20px;
+}
+
+.user_img{
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.img{
+  display: flex;
+  height: 80px;
+  height: 100px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 100px;
+  left: 24%;
+  box-shadow: 3px 4px 10px rgba(0, 0, 255, 0.336);
+}
