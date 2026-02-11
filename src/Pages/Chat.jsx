@@ -5,6 +5,7 @@ import { CiLocationArrow1 } from "react-icons/ci";
 import { DataContext, prevuse } from '../UserContext/store';
 import { MdOutlineUploadFile } from "react-icons/md";
 
+
 const Chat = () => {
   
   const { inp , resultAI ,feature , genimgurl} = useContext(DataContext);
@@ -56,7 +57,10 @@ const Chat = () => {
           </>
           :
             <>
-              {!resultAI ? <span>API </span> : <span className='ai-s'>{resultAI}</span>}
+              {!resultAI ? <div>
+                 please,Try again later!!
+              </div>
+                  : <span className='ai-s'>{resultAI}</span>}
             </>
           }
 
@@ -77,3 +81,5 @@ const Chat = () => {
 }
 
 export default Chat
+
+
