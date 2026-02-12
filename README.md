@@ -1,16 +1,42 @@
-# React + Vite
+# Chatbot Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple chatbot application built to demonstrate core programming concepts such as input processing, conditional logic, and basic conversation flow. This project is intended for learning and experimentation, not production use.
 
-Currently, two official plugins are available:
+## Features
+- Text-based user interaction
+- Predefined responses based on user input
+- Simple and readable project structure
+- Easy to extend with new commands or responses
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- Programming Language: Python
+- Environment: Local machine / terminal
 
-## React Compiler
+## Project Structure
+Chatbot_project/
+│
+├── main.py # Entry point of the chatbot
+├── chatbot.py # Chatbot logic and response handling
+├── requirements.txt # Dependencies (if any)
+└── README.md # Project documentation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+User: Hello
+Bot: Hi! How can I help you today?
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Limitations
+- No natural language processing
+- Responses are rule-based
+- No database or memory persistence
+
+## Future Improvements
+- Add NLP using libraries like NLTK or spaCy
+- Integrate with a web interface
+- Store conversation history
+- Improve response accuracy
+
+## License
+This project is licensed under the MIT License.
+
+## Author
+Krish Ghori
