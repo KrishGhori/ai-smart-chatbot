@@ -35,8 +35,5 @@ Bot: Hi! How can I help you today?
 - Store conversation history
 - Improve response accuracy
 
-## License
-This project is licensed under the MIT License.
-
 ## Author
 Krish Ghori
