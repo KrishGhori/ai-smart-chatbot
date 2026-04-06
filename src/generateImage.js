@@ -59,7 +59,7 @@ export async function generatimage(prompt) {
       } else {
         message = bodyJson?.error?.message || message;
       }
-    } catch (e) {
+    } catch {
       message = `${message}: ${text}`;
     }
     console.warn(message);

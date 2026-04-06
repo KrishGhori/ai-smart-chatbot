@@ -1,5 +1,4 @@
 import { useState } from "react"
-import Home from "../Pages/Home"
 import { DataContext } from "./store"
 const User = ({children}) => {
  
@@ -7,7 +6,7 @@ const User = ({children}) => {
  
   const [popup , setpopup] = useState(false);
   const [ inp , setinp] = useState('') ;
-  const [feature , setfeature] = useState("chat");
+  const [feature , setfeature] = useState("Let's Chat");
   const [resultAI , setresultAI] = useState("") ;
   const [genimgurl , setgenimgurl] = useState("")
  

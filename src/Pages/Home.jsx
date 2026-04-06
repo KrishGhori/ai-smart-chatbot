@@ -3,7 +3,6 @@ import { MdOutlineUploadFile, MdOutlineImage } from "react-icons/md";
 import { CiChat1 } from "react-icons/ci";
 import { GoPlus } from "react-icons/go";
 import { CiLocationArrow1 } from "react-icons/ci";
-import Chat from './Chat';
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { use } from "../UserContext/store";
@@ -95,6 +94,7 @@ const Home = () => {
 
     const handleimage = (e) => {
         const file = e.target.files[0]
+        if (!file) return;
         const reader = new FileReader();
         reader.onload = (event) => {
             const base64 = event.target.result;
@@ -159,7 +159,7 @@ const Home = () => {
         <form className='add' onSubmit= {(e)=>{
             e.preventDefault()
             if(inp){
-                if(feature== "Generate Image"){
+                if(feature === "Generate Image"){
                     handlegenerateimg()
                 }
                 else{
@@ -168,7 +168,7 @@ const Home = () => {
             }
         }}>  
         
-        {feature== "Upload Image" ? <img src={use.imgUrl} className="img" alt="" /> : null}
+        {feature === "Upload Image" ? <img src={use.imgUrl} className="img" alt="" /> : null}
             
             {popup ? 
             <div className="plies">
@@ -189,7 +189,7 @@ const Home = () => {
                 setpopup(prev => !prev)
             }}>
              
-             {feature== "Generate Image" ? <MdOutlineImage /> : <GoPlus></GoPlus>}
+             {feature === "Generate Image" ? <MdOutlineImage /> : <GoPlus></GoPlus>}
              
             </div>
             <input type="text" title="input" className = "input" onChange={(e)=>setinp(e.target.value)} value={inp} placeholder='Ask Something...' />
