@@ -1,32 +1,30 @@
-// Gemini image generator using the official endpoint.
-// IMPORTANT: Set your API key in a Vite env variable named VITE_GEMINI_API_KEY
-// Example .env: VITE_GEMINI_API_KEY="YOUR_KEY_HERE"
+const FREE_IMAGE_API_URL = "https://image.pollinations.ai/prompt";
 
 export async function generatimage(prompt) {
-  // Read the key from Vite env (do not hard-code API keys in source)
   const key = import.meta.env.VITE_GEMINI_API_KEY;
+  const useGemini = import.meta.env.VITE_USE_GEMINI_IMAGE === "true" && Boolean(key);
   const placeholder = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=";
+  const cleanPrompt = String(prompt || "").trim();
 
-  if (!key) {
-    // No API key configured — use Unsplash Source (no signup) when a prompt is provided,
-    // otherwise fall back to the tiny placeholder image.
-    if (prompt && prompt.trim()) {
-      const unsplashUrl = `https://source.unsplash.com/1200x800/?${encodeURIComponent(prompt)}`;
-      console.info('No Gemini key: returning Unsplash URL for prompt.');
-      return { src: unsplashUrl, message: 'No Gemini API key configured — using Unsplash photos for this prompt.' };
-    }
-
-    console.warn('Gemini API key missing; showing placeholder image. To enable real images set VITE_GEMINI_API_KEY and restart Vite.');
-    return { src: placeholder, message: 'No Gemini API key configured — showing placeholder image.' };
+  if (!cleanPrompt) {
+    return { src: placeholder, message: "Please enter a prompt to generate an image." };
   }
 
-  // Use header-based key; do not include key in URL to avoid leaking it in logs
+  if (!useGemini) {
+    const freeImageUrl = `${FREE_IMAGE_API_URL}/${encodeURIComponent(cleanPrompt)}?width=1024&height=1024&model=flux&nologo=true`;
+    return {
+      src: freeImageUrl,
+      message: "Generated using free image API."
+    };
+  }
+
+  // Optional Gemini path when explicitly enabled.
   const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent';
   const body = {
     contents: [
       {
         parts: [
-          { text: prompt }
+          { text: cleanPrompt }
         ]
       }
     ]
@@ -63,8 +61,11 @@ export async function generatimage(prompt) {
       message = `${message}: ${text}`;
     }
     console.warn(message);
-    // return placeholder image and message instead of throwing to avoid app crash
-    return { src: placeholder, message };
+    const freeImageUrl = `${FREE_IMAGE_API_URL}/${encodeURIComponent(cleanPrompt)}?width=1024&height=1024&model=flux&nologo=true`;
+    return {
+      src: freeImageUrl,
+      message: `${message} Falling back to free image API.`
+    };
   }
 
   const data = await resp.json();

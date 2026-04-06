@@ -7,8 +7,28 @@ import { MdOutlineUploadFile } from "react-icons/md";
 const renderStructuredAnswer = (text) => {
   if (!text) return null;
 
-  const lines = String(text)
-    .replace(/\r\n/g, "\n")
+  const normalizeAnswerText = (rawText) => {
+    let normalized = String(rawText || "")
+      .replace(/\r\n/g, "\n")
+      .replace(/\t/g, " ")
+      .trim();
+
+    // Convert common "Title: sentence..." blobs into a heading + body line.
+    normalized = normalized.replace(/^([A-Z][A-Za-z\s'()\-]{2,90}):\s+/, "$1:\n");
+
+    // If providers return one long line, split into readable paragraph lines.
+    if (!normalized.includes("\n")) {
+      normalized = normalized
+        .replace(/([.?!])\s+(?=[A-Z][a-z])/g, "$1\n\n")
+        .replace(/;\s+(?=[A-Z])/g, ";\n");
+    }
+
+    return normalized;
+  };
+
+  const formattedText = normalizeAnswerText(text);
+
+  const lines = String(formattedText)
     .split("\n")
     .map((line) => line.trim())
     .filter(Boolean);
